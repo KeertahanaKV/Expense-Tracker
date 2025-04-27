@@ -5,13 +5,11 @@ import { Link } from "react-router-dom";
 import ProfilePhotoSelector from "../../components/inputs/ProfilePhotoSelector";
 
 const Signup = () => {
- 
   const [profilePic, setProfilePic] = useState(null);
   const [fullname, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState({});
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,16 +39,15 @@ const Signup = () => {
 
     setError({});
     console.log("Signing up with", fullname, email, password, profilePic);
-    
   };
 
   return (
     <AuthLayout>
-      <div className="lg:w-[70%] mid:h-full flex flex-col justify-center">
-        <h3 className="text-2xl font-semibold text-black mb-2">Create an account</h3>
-        <p className="text-sm text-slate-700 mb-6">Join us today by entering your details below</p>
+      <div className="w-full  bg-white p-5 rounded-lg shadow-lg flex flex-col justify-center">
+        <h3 className="text-3xl font-semibold text-gray-800 text-center mb-6">Create Your Account</h3>
+        <p className="text-sm text-gray-600 mb-6 text-center">Join us today by entering your details below</p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <ProfilePhotoSelector image={profilePic} setImage={setProfilePic} />
 
           <Input
@@ -59,6 +56,7 @@ const Signup = () => {
             label="Full Name"
             placeholder="John Doe"
             type="text"
+            className="input-field"
           />
           {error?.fullname && <p className="text-red-500 text-sm">{error.fullname}</p>}
 
@@ -66,8 +64,9 @@ const Signup = () => {
             label="Email"
             value={email}
             onChange={({ target }) => setEmail(target.value)}
-            placeholder="keerthana@gmail.com"
-            type="text"
+            placeholder="youremail@example.com"
+            type="email"
+            className="input-field"
           />
           {error?.email && <p className="text-red-500 text-sm">{error.email}</p>}
 
@@ -77,19 +76,20 @@ const Signup = () => {
             onChange={({ target }) => setPassword(target.value)}
             placeholder="Min 8 Characters"
             type="password"
+            className="input-field"
           />
           {error?.password && <p className="text-red-500 text-sm">{error.password}</p>}
 
           <button
             type="submit"
-            className="w-full mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+            className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 rounded-lg shadow-md hover:scale-105 transition-transform"
           >
             Sign Up
           </button>
 
-          <p className="text-sm mt-4 text-center">
+          <p className="text-sm mt-6 text-center text-gray-600">
             Already have an account?{" "}
-            <Link to="/login" className="text-blue-500 hover:underline">
+            <Link to="/login" className="text-blue-600 hover:underline">
               Login
             </Link>
           </p>

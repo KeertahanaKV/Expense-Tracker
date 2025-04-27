@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AuthLayout from "../../components/Layouts/AuthLayout";
 import Input from "../../components/inputs/Input";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -32,54 +32,45 @@ const Login = () => {
 
     setError({});
     console.log("Logging in with", email, password);
-    // your login logic goes here
   };
 
   return (
     <AuthLayout>
-      <div className="lg:w-[70%] h-3/4 mid:h-full flex flex-col justify-center">
-        <h1 className="text-xl font-semibold text-black">Welcome Back</h1>
-        <p className="text-xs text-slate-700 mt-[5px] mb-6">
-          Please enter your details to log in
-        </p>
+      <div className="w-full  bg-white p-29 rounded-lg shadow-lg flex flex-col justify-center">
+        <h3 className="text-3xl font-semibold text-gray-800 text-center mb-6">Welcome Back</h3>
+        <p className="text-sm text-gray-600 mb-6 text-center">Please log in to continue</p>
 
-        <form onSubmit={handleLogin} className="space-y-4">
-          <div>
-            <Input
-              label="Email"
-              value={email}
-              onChange={({ target }) => setEmail(target.value)}
-              placeholder="keerthana@gmail.com"
-              type="text"
-            />
-            {error?.email && (
-              <p className="text-red-500 text-sm mt-1">{error.email}</p>
-            )}
-          </div>
+        <form onSubmit={handleLogin} className="space-y-6">
+          <Input
+            label="Email"
+            value={email}
+            onChange={({ target }) => setEmail(target.value)}
+            placeholder="youremail@example.com"
+            type="email"
+            className="input-field"
+          />
+          {error?.email && <p className="text-red-500 text-sm">{error.email}</p>}
 
-          <div>
-            <Input
-              label="Password"
-              value={password}
-              onChange={({ target }) => setPassword(target.value)}
-              placeholder="Min 8 Characters"
-              type="password"
-            />
-            {error?.password && (
-              <p className="text-red-500 text-sm mt-1">{error.password}</p>
-            )}
-          </div>
+          <Input
+            label="Password"
+            value={password}
+            onChange={({ target }) => setPassword(target.value)}
+            placeholder="Min 8 Characters"
+            type="password"
+            className="input-field"
+          />
+          {error?.password && <p className="text-red-500 text-sm">{error.password}</p>}
 
           <button
             type="submit"
-            className="w-full mt-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+            className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold py-3 rounded-lg shadow-md hover:scale-105 transition-transform"
           >
             Login
           </button>
 
-          <p className="text-sm text-gray-600 mt-4">
+          <p className="text-sm mt-6 text-center text-gray-600">
             Don’t have an account?{" "}
-            <Link to="/Signup" className="text-blue-600 hover:underline">
+            <Link to="/signup" className="text-blue-600 hover:underline">
               Sign up
             </Link>
           </p>
