@@ -13,8 +13,8 @@ exports.registerUser=async(req,res)=>{
        }
        try{
         //check if emial already exist
-        const existngUser=await user.findOne({email});
-          if(!existngUser){
+        const existngUser=await User.findOne({email});
+          if(existngUser){
                 return res.status(400).json({message:"Email already in use"})
           }
           //Create the user
