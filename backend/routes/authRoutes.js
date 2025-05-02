@@ -1,5 +1,5 @@
 const express=require("express")
-
+const {protect} =require('../middleware/authMiddleware')
 const {
     registerUser,
     loginUser,
@@ -9,6 +9,6 @@ const {
 const router=express.Router()
 router.post(`/register`,registerUser)
 router.post(`/login`,loginUser)
-// router.get(`/getUserInfo`,protect,getUserInfo)
+ router.get(`/getUserInfo`,protect,getUserInfo)
 
 module.exports=router
