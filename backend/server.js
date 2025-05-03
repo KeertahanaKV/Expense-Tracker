@@ -17,6 +17,8 @@ app.use(
 app.use(express.json())
 connectDB()
 app.use("/api/v1/auth",authRoutes)
+
+app.use("/uploads",express.static(path.join(__dirname,"uploads")))
 const port=process.env.PORT || 8000;
 app.listen(port,()=>{
      console.log(`server is runningon port ${port}`)
